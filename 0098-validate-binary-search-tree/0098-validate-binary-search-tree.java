@@ -25,26 +25,16 @@ class Solution {
             {
                 s.push(node);
                 
-                if(node.left == null)
-                {
-                    if(prev == null || node.val>prev)
-                    {
-                        
-                    } else return false;
-                }
+                // if(node.left == null)
+                // {
+                //     if(prev != null && node.val<=prev) return false;
+                // }
                 node = node.left;
             }
             node = s.pop();
             
-            if(prev == null || node.val>prev)
-                    {
-
-                    } else return false;
+            if(prev != null && node.val<=prev) return false;
             prev = node.val;
-
-            
-            
-            
             node = node.right;
         }
         return true;
