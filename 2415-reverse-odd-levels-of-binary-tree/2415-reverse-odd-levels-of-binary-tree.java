@@ -28,7 +28,7 @@ class Solution {
                 TreeNode node = q.removeFirst();
                 
                 if(level%2==1)
-                {    
+                {    // for each odd level, store the node refs and the values in an array
                     nodes.add(node);
                     vals.add(node.val);
                 } 
@@ -37,6 +37,8 @@ class Solution {
                 
                 
             }
+            
+            // after finishing collecting nodes and vals on odd levels, keep node refs same, just update vals in backswards
             for(int i=0; i<nodes.size(); i++)
             {
                 nodes.get(i).val = vals.get(vals.size()-1-i);
