@@ -11,7 +11,7 @@ class BrowserHistory {
     public void visit(String url) {
         back.push(curr);
         curr = url;
-        forward = new ArrayDeque<>();
+        forward.clear();
     }
     
     public String back(int steps) {
