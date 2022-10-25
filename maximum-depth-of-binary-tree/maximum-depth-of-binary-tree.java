@@ -14,28 +14,24 @@
  * }
  */
 class Solution {
+    private int answer=0;
     public boolean isLeaf(TreeNode x)
     {
         return x.left == null && x.right == null;
     }
-    public int maxDepth(TreeNode root) {
-        if(root==null) return 0;
-        if(isLeaf(root)) return 1;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        int levels = 1;
-        
-        while(!q.isEmpty())
+    public void md(TreeNode root,int depth)
+    {
+        if(root ==null) return;
+        if(isLeaf(root))
         {
-            int size = q.size();
-            for(int i=0; i<size; i++)
-            {
-                TreeNode node = q.poll();
-                if(node.left!=null) q.add(node.left);
-                if(node.right!=null) q.add(node.right);
-            }
-            levels++;
+            answer = Math.max(answer,depth);
         }
-        return levels-1;
+        md(root.left,depth+1);
+        md(root.right,depth+1);
+        
+    }
+    public int maxDepth(TreeNode root) {
+        md(root,1);
+        return answer;
     }
 }
